@@ -41,3 +41,12 @@ config :recurrent, Recurrent.Repo,
   database: "recurrent_dev",
   hostname: "localhost",
   pool_size: 10
+
+  config :guardian, Guardian,
+    allowed_algos: ["HS512"], # optional
+    verify_module: Guardian.JWT,  # optional
+    issuer: "Recurrent",
+    ttl: { 30, :days },
+    verify_issuer: true, # optional
+    secret_key: "0CwKl1kfQoIE358JYufKqeUig5ixacjj/lQsRfuvtrdC5tkVytUrFcUtcNCbcu5J",
+    serializer: Recurrent.GuardianSerializer

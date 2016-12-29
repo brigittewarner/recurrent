@@ -13,9 +13,25 @@ defmodule Recurrent.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :browser_session do
+    plug Guardian.Plug.VerifySession
+    plug Guardian.Plug.LoadResource
+  end
+
+  pipeline :auth do
+    plug Guardian.Plug.EnsureAuthenticated, handler: Recurrent.AuthHandler
+  end
+
+  scope "/admin", Recurrent.Admin do
+    pipe_through [:browser, :browser_session, :auth]
+    get "/", PageController, :index, as: "admin"
+  end
+
   scope "/", Recurrent do
     pipe_through :browser # Use the default browser stack
 
+    resources "/users", UserController, only: [:new, :create]
+     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/", PageController, :index
   end
 
