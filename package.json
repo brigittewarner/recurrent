@@ -1,11 +1,15 @@
 {
-  "repository": {},
+  "repository": {
+    "url": "https://github.com/brigittewarner/recurrent.git",
+    "type": "git"
+  },
   "license": "MIT",
   "scripts": {
     "deploy": "brunch build --production",
     "watch": "brunch watch --stdin"
   },
   "dependencies": {
+    "milligram": "^1.2.4",
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html"
   },
@@ -16,5 +20,9 @@
     "css-brunch": "~2.0.0",
     "javascript-brunch": "~2.0.0",
     "uglify-js-brunch": "~2.0.1"
-  }
+  },
+  "name": "recurrent",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": ""
 }
