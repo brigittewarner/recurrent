@@ -16,6 +16,8 @@ defmodule Recurrent.Router do
   scope "/", Recurrent do
     pipe_through :browser # Use the default browser stack
 
+    resources "/users", UserController, only: [:new, :create]
+     resources "/sessions", SessionController, only: [:new, :create, :delete]
     get "/", PageController, :index
   end
 
