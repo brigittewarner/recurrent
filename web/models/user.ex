@@ -1,5 +1,6 @@
 defmodule Recurrent.User do
   use Recurrent.Web, :model
+  alias Comeonin.Bcrypt
 
   schema "users" do
     field :email, :string, unique: true

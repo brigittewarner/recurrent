@@ -19,6 +19,14 @@ config :recurrent, Recurrent.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+config :guardian, Guardian,
+  allowed_algos: ["HS512"], # optional
+  verify_module: Guardian.JWT,  # optional
+  issuer: "Recurrent",
+  ttl: { 30, :days },
+  verify_issuer: true, # optional
+  secret_key: System.get_env("GUARDIAN_SECRET"),
+  serializer: Recurrent.GuardianSerializer
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
